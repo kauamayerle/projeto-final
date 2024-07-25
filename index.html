@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Final</title>
+    <style>
+      
+      body {
+        color: white;
+        margin-top: 600px;
+        margin-bottom: 600px;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('https://i.pinimg.com/1200x/08/39/ef/0839ef70e42b187b8718b5e762f259a1.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        width: 90%;
+        height: auto;
+        max-width: 600px;
+        background-color: rgba(56, 55, 55, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .section {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .section h3 {
+        margin-top: 20px;
+        color: white;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      textarea {
+        width: calc(100% - 20px);
+        
+        padding: 10px;
+        font-size: 16px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        
+      }
+
+      button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        background-color: black;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      button:hover {
+        background-color: #808080;
+      }
+
+      #foto_inicio {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+    </style>
+    <script type="text/javascript" src="./index.js" defer=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="section">
+      <img id="foto_inicio" src="https://us-tuna-sounds-images.voicemod.net/523b7fd6-b8a6-41e6-9340-9fe0e19d91a0-1704514833378.jpg" alt="Foto de Kauã Mayerle">
+
+      <p>Nome: Kauã Mayerle</p>
+      <p>Cidade: Lajeado - RS</p>
+      <p>Insta: @kauamayerlee</p>
+
+      
+        <h3>Calcular IMC</h3>
+        <input type="text" placeholder="Metros: Ex: 1.80" id="input_altura">
+        <input type="text" placeholder="Quilos: Ex: 84 Kg" id="input_peso">
+        <button id="calcular_imc">Calcular</button>
+      </div>
+
+      <div class="section">
+        <h3>Calculadora</h3>
+        <input type="text" placeholder="Valor 1" id="input_cal_v1">
+        <input type="text" placeholder="Valor 2" id="input_cal_v2">
+        <div id="mat">
+          <button id="b_+">+</button>
+          <button id="b_-">-</button>
+          <button id="b_*">x</button>
+          <button id="b_/">÷</button>
+        </div>
+        <input id="resultado" type="text" placeholder="Resultado" readonly="">
+      </div>
+
+      <div class="section">
+        <h3>Login</h3>
+        <p>Sisteminha do Mayerlinho hehe</p>
+        <input type="text" placeholder="User: Ex: Joaogameplays999" id="usuario">
+        <input type="password" placeholder="Senha: Ex: Jozielio#@999" id="senha">
+        <button id="entrar">Entrar</button>
+      </div>
+
+      <div class="section">
+        <h3>Digitação de Texto</h3>
+        <textarea id="resumo" cols="50" rows="4" placeholder="Digite seu texto aqui"></textarea>
+        <p id="quant">Quantidade: 0</p>
+        <button onclick="limpar()">Limpar</button>
+      </div>
+    </div>
+
+
+
+    <script>
+      let botaoCal = document.getElementById('calcular_imc')
+
+      botaoCal.onclick = function() {
+        let altura = document.getElementById('input_altura').value;
+        let peso = document.getElementById('input_peso').value;
+
+        if (altura !== '' && peso !== '') {
+          let imc = (peso / (altura * altura)).toFixed(2)
+          alert('Seu IMC é de: ' + imc);
+        } else {
+          alert('Por favor, preencha altura e peso.')
+        }
+      }
+    </script>
+
+    <script>
+      let r = document.getElementById('resultado')
+      let soma = document.getElementById('b_+')
+      let sub = document.getElementById('b_-')
+      let multi = document.getElementById('b_*')
+      let div = document.getElementById('b_/')
+
+      soma.onclick = function() {
+        let v1 = parseFloat(document.getElementById('input_cal_v1').value)
+        let v2 = parseFloat(document.getElementById('input_cal_v2').value)
+
+        let resultado = v1 + v2
+        r.value = resultado
+      }
+
+      sub.onclick = function() {
+        let v1 = parseFloat(document.getElementById('input_cal_v1').value)
+        let v2 = parseFloat(document.getElementById('input_cal_v2').value)
+
+        let resultado = v1 - v2
+        r.value = resultado
+      }
+
+      multi.onclick = function() {
+        let v1 = parseFloat(document.getElementById('input_cal_v1').value)
+        let v2 = parseFloat(document.getElementById('input_cal_v2').value)
+
+        let resultado = v1 * v2
+        r.value = resultado
+      }
+
+      div.onclick = function() {
+        let v1 = parseFloat(document.getElementById('input_cal_v1').value)
+        let v2 = parseFloat(document.getElementById('input_cal_v2').value)
+
+        let resultado = v1 / v2
+        r.value = resultado
+      }
+    </script>
+
+    <script>
+      let userV = "mayerle"
+      let senhaV = "adm"
+
+      let entrar = document.getElementById('entrar')
+
+      entrar.onclick = function() {
+        let user = document.getElementById('usuario').value
+        let senha = document.getElementById('senha').value
+
+        if (user == userV && senha == senhaV) {
+          alert('Login bem sucedido....')
+        } else {
+          alert('Algo deu errado, tente novamente!!')
+        }
+      }
+    </script>
+
+    <script>
+      let quant = document.getElementById('quant')
+      let inputElement = document.getElementById('resumo')
+
+      inputElement.addEventListener('keyup', function(event) {
+        quant.innerHTML = 'Quantidade: ' + inputElement.value.length;
+      })
+
+      function limpar() {
+        inputElement.value = ''
+        quant.innerHTML = 'Quantidade: '
+      }
+    </script>
+
+  </body>
+
+</html>
